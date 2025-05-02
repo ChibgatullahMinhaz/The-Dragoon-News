@@ -2,15 +2,15 @@ import React from "react";
 import Header from "../Components/Header/Header";
 import { Navbar } from "../Components/Navbar/Navbar";
 import { Outlet } from "react-router";
+import LatestNews from "../Components/LatestNews/LatestNews";
 
 const MainLayout = () => {
     return (
         <div className="w-11/12 mx-auto my-3" >
-          <header>
+          <header >
             <Header></Header>
             <section >
-              {/* <LatestNews></LatestNews> */}
-              <div>latest news</div>
+              <LatestNews></LatestNews>
             </section>
             <nav className=" my-3">
               <Navbar></Navbar>
