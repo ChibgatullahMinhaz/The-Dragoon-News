@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Marquee from "react-fast-marquee";
 import Logo from "../../assets/logo.png";
+import { NewsContext } from "../../Store/Context/Context";
 const LatestNews = () => {
+  const {news} = useContext(NewsContext)
+  console.log(news);
   return (
     <div
       className="bg-base-300 p-3 rounded-lg flex items-center "

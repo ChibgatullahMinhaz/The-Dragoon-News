@@ -2,22 +2,23 @@ import { createBrowserRouter } from "react-router";
 import App from "../App";
 import { ErrorPage } from "../Pages/Error/ErrorPage";
 import HomePage from "../Pages/Home/HomePage";
-import MainLayout from "../Layouts/MainLayout";
+
 import { AuthLayout } from "../Layouts/AuthLayout";
 import CategoryNews from "../Pages/CategoryNews/CategoryNews";
 import { NewsLayout } from "../Layouts/NewsLayout";
 import Login from "../features/Auth/pages/Login";
 import SingUp from "../features/Auth/pages/SingUp";
+import MainPage from "../Layouts/MainPage";
 
-export const routers = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout></MainLayout>,
+    element: <MainPage></MainPage> ,
     children: [
       {
-        path: "",
+      
         index: true,
-        Component: HomePage,
+        element:<HomePage></HomePage> ,
       },
       {
         path: "/about",
@@ -25,7 +26,7 @@ export const routers = createBrowserRouter([
       },
       {
         path: "/category/:id",
-        Component: CategoryNews
+        element: <CategoryNews></CategoryNews>
       },
     ],
   },
