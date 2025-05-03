@@ -20,7 +20,7 @@ export const NewsLayout = () => {
         </nav>
       </header>
 
-       <main className='grid grid-cols-12 md:mt-8'>
+       <main className=' md:grid md:grid-cols-12 md:mt-8'>
         <section className='col-span-9'>
         <NewsDetails></NewsDetails>
         </section>

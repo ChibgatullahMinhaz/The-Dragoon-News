@@ -8,7 +8,7 @@ export const Categories = () => {
   return (
     <div>
       <h className="text-primary text-xl font-semibold">All Category</h>
-      <div className="grid grid-cols-1 mt-5 gap-3 shadow-sm rounded-sm p-2">
+      <div className=" flex justify-between items-center flex-wrap md:grid md:grid-cols-1 mt-5 gap-3 shadow-sm rounded-sm p-2">
         {categories.map((category) => (
           <NavLink
             key={category.id}

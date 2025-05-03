@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { CategoryContext, LoaderContext } from "../Context/Context";
+import { CategoryContext, LoaderContext } from "../../Context/Context";
+
 
 const CategoryProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);

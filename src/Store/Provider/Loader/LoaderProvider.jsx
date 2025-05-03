@@ -1,5 +1,5 @@
 import React, {  useState } from 'react';
-import { LoaderContext } from '../Context/Context';
+import { LoaderContext } from '../../Context/Context';
 
 const LoaderProvider = ({children}) => {
     const [isLoading , setIsLoading] = useState(true);

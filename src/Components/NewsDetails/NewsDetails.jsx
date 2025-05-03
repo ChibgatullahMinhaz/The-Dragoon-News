@@ -8,6 +8,7 @@ const NewsDetails = () => {
   const { news } = useContext(NewsContext);
   const [details, setDetails] = useState({});
   const [suggestionNews, setSuggestionNews] = useState([]);
+  
   useEffect(() => {
     const findNews = news.find((data) => data.id == Id);
     setDetails(findNews);

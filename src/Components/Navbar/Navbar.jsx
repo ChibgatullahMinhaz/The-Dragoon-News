@@ -1,7 +1,20 @@
-import React from "react";
-import { NavLink } from "react-router";
+import React, { useContext } from "react";
+import { Link, NavLink } from "react-router";
 import User from '../../assets/user.png';
+import { AuthContext } from "../../Store/Context/Context";
+import { toast } from "react-toastify";
 export const Navbar = () => {
+  const {user,logout} = useContext(AuthContext);
+  const {photoURL,email,displayName} =user || {};
+
+  const handleSingOut =()=> {
+    logout().then(()=> {
+      toast.success('log-out Successfully')
+    }).catch(error=> {
+      console.log(error);
+    })
+  }
+
   return (
     <div className="flex justify-between items-center my-4">
       <div className="hide md:block"> </div>
@@ -19,10 +32,18 @@ export const Navbar = () => {
         </li>
       
       </ul>
-      <div className="flex gap-x-1.5">
+     {
+      user ? 
+      <div className="flex gap-x-2 items-center">
+        <h1 className="hidden md:block">{displayName}</h1>
+      <img onClick={handleSingOut} src={photoURL} alt={displayName}  className="w-10  h-10 rounded-full"/>
+      </div> : (
+        <div className="flex gap-x-1.5">
         <img src={User} alt="user icon " />
-        <button className="btn btn-primary">Login</button>
+        <Link to={`/auth/login`} className="btn btn-primary">Login</Link>
       </div>
+      )
+     }
     </div>
   );
 };

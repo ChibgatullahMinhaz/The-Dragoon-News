@@ -6,6 +6,8 @@ import MainLayout from "../Layouts/MainLayout";
 import { AuthLayout } from "../Layouts/AuthLayout";
 import CategoryNews from "../Pages/CategoryNews/CategoryNews";
 import { NewsLayout } from "../Layouts/NewsLayout";
+import Login from "../features/Auth/pages/Login";
+import SingUp from "../features/Auth/pages/SingUp";
 
 export const routers = createBrowserRouter([
   {
@@ -30,6 +32,16 @@ export const routers = createBrowserRouter([
   {
     path: "/auth",
     element: <AuthLayout></AuthLayout>,
+    children: [
+      {
+        path: '/auth/login',
+        element: <Login></Login>
+      },
+      {
+        path: '/auth/register',
+        element: <SingUp></SingUp>
+      }
+    ]
   },
   {
     path: "/news/:Id",
