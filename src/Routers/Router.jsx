@@ -2,10 +2,10 @@ import { createBrowserRouter } from "react-router";
 import App from "../App";
 import { ErrorPage } from "../Pages/Error/ErrorPage";
 import HomePage from "../Pages/Home/HomePage";
-import MainLayout from "../Layouts/Mainlayout";
-import { NewsPage } from "../Pages/News/NewsPage";
+import MainLayout from "../Layouts/MainLayout";
 import { AuthLayout } from "../Layouts/AuthLayout";
 import CategoryNews from "../Pages/CategoryNews/CategoryNews";
+import { NewsLayout } from "../Layouts/NewsLayout";
 
 export const routers = createBrowserRouter([
   {
@@ -32,18 +32,8 @@ export const routers = createBrowserRouter([
     element: <AuthLayout></AuthLayout>,
   },
   {
-    path: "/news",
-    Component: NewsPage,
-    children: [
-      {
-        path: "/news/top",
-        element: <div>hellop </div>,
-      },
-      {
-        path: "/news/wow",
-        element: <div>wow </div>,
-      },
-    ],
+    path: "/news/:Id",
+    Component: NewsLayout,
   },
   {
     path: "*",
