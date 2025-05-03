@@ -4,7 +4,7 @@ import User from '../../assets/user.png';
 export const Navbar = () => {
   return (
     <div className="flex justify-between items-center my-4">
-      <div> </div>
+      <div className="hide md:block"> </div>
       <ul className="flex gap-x-2.5 text-accent">
         <li>
           <NavLink to="/">Home</NavLink>
