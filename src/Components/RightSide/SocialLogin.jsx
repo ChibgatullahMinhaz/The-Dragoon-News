@@ -14,7 +14,6 @@ const SocialLogin = () => {
     const handleLoginWithGoogle = () => {
       creteUserWithGoogle(provider)
         .then((result) => {
-          console.log(result);
           toast.success("User Login Successfully");
           Navigate( location?.state || "/");
         })

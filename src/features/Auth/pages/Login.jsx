@@ -1,17 +1,24 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
-import { GithubAuthProvider, GoogleAuthProvider, sendPasswordResetEmail, signOut } from "firebase/auth";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  sendPasswordResetEmail,
+  signOut,
+} from "firebase/auth";
 import { toast } from "react-toastify";
 import { auth } from "../Firebase/firebase.init";
 import { AuthContext } from "../../../Store/Context/Context";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   const emailRef = useRef();
   const { creteUserWithGoogle, createUserWithGithub, userLogin, user } =
     useContext(AuthContext);
   const navigate = useNavigate();
-  const location = useLocation()
-  console.log(location);
+  const location = useLocation();
 
   const handleSingIn = (e) => {
     e.preventDefault();
@@ -30,7 +37,7 @@ const Login = () => {
         }
 
         toast.success("login successful");
-        navigate( location?.state ||"/");
+        navigate(location?.state || "/");
       })
       .catch((error) => {
         const errorcode = error.code;
@@ -45,19 +52,18 @@ const Login = () => {
   };
 
   const handleReset = () => {
-    const email = emailRef.current.value
-   if (!email) {
-    toast.error('Please Enter Your Email');
-    return;
-   }
-   sendPasswordResetEmail(auth, email)
-   .then(()=> {
-    toast.success('we send email for reset password ');
-
-   }).catch(error=> {
-    const errorCode = error.code;
-    console.log(errorCode);
-   })
+    const email = emailRef.current.value;
+    if (!email) {
+      toast.error("Please Enter Your Email");
+      return;
+    }
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        toast.success("we send email for reset password ");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+      });
   };
 
   const handleLoginWithGithub = () => {
@@ -70,9 +76,8 @@ const Login = () => {
   const handleLoginWithGoogle = () => {
     creteUserWithGoogle(provider)
       .then((result) => {
-        console.log(result);
         toast.success("User Login Successfully");
-        navigate( location?.state || "/");
+        navigate(location?.state || "/");
       })
       .catch((error) => {
         toast.warning(error);
@@ -91,23 +96,32 @@ const Login = () => {
             autoComplete="email"
             ref={emailRef}
           />
-          <label className="label">Password</label>
-          <input
-            required
-            type="password"
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-            title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
-            autoComplete="current-password"
-            name="password"
-            className="input"
-            placeholder="Password"
-          />
+          <label className="label">Password </label>
+          <div className="input">
+            <input
+              required
+              type={showPassword ? "text" : "password"}
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
+              autoComplete="current-password"
+              name="password"
+              className=" focus:outline-none" 
+              placeholder="Password"
+            />
+            <span
+              className=" cursor-pointer"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
+
           <div>
             <a onClick={handleReset} className="link link-hover">
               Forgot password?
             </a>
           </div>
-          
+
           <button type="submit" className="btn btn-primary mt-4">
             Login
           </button>

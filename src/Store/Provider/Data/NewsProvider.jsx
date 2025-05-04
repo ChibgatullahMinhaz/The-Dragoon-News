@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { LoaderContext, NewsContext } from "../Context/Context";
+import { toast } from "react-toastify";
 
 const NewsProvider = ({ children }) => {
   const [news, setNews] = useState([]);
@@ -13,7 +14,7 @@ const NewsProvider = ({ children }) => {
         const Data = await response.json();
         setNews(Data);
       } catch (error) {
-        console.log(error.message);
+        toast.error(error.message);
       } finally {
         setIsLoading(false);
       }

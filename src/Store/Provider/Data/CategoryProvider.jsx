@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CategoryContext, LoaderContext } from "../../Context/Context";
+import { toast } from "react-toastify";
 
 
 const CategoryProvider = ({ children }) => {
@@ -16,7 +17,7 @@ const CategoryProvider = ({ children }) => {
         setCategories(Data);
         
      } catch (error) {
-        console.log(error.message);
+        toast.error(error.message);
      }finally{
         setIsLoading(false);
      }

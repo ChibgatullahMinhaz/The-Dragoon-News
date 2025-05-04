@@ -11,7 +11,7 @@ export const Navbar = () => {
     logout().then(()=> {
       toast.success('log-out Successfully')
     }).catch(error=> {
-      console.log(error);
+      toast.error(error)
     })
   }
 

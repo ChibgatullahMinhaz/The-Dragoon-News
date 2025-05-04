@@ -45,7 +45,6 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       setIsLoading(false);
      return ()=> unsubscribe();
-
     });
   }, [setIsLoading]);
 

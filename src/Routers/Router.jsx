@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router";
-import App from "../App";
 import { ErrorPage } from "../Pages/Error/ErrorPage";
 import HomePage from "../Pages/Home/HomePage";
 
@@ -16,7 +15,6 @@ export const router = createBrowserRouter([
     element: <MainPage></MainPage> ,
     children: [
       {
-      
         index: true,
         element:<HomePage></HomePage> ,
       },

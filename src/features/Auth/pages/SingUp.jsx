@@ -35,7 +35,6 @@ const SingUp = () => {
         navigate("/login");
       })
       .catch((error) => {
-        console.log(error.message);
         toast.warning("You have Already an Account! Please Login");
       });
   };
